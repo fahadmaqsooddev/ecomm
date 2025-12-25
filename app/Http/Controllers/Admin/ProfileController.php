@@ -35,9 +35,9 @@ class ProfileController extends Controller
         $saved=$data->save();
         if($saved){
             //echo"Data Saved";
-            return redirect()->route('profile')->with('msg','Profile Updated');
+            return redirect()->route('admin.profile')->with('msg','Profile Updated');
         }else{
-            return redirect()->route('profile')->with('msg','Something Went Wrong');
+            return redirect()->route('admin.profile')->with('msg','Something Went Wrong');
         }
     }
 }

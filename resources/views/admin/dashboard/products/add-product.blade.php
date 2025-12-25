@@ -63,7 +63,7 @@
               </div>
               <div class="form-group">
                 <label for="quantity">Quantity</label>
-                <input type="number" name="quantity" class="form-control" id="quantity" placeholder="Enter Quantity" value="{{ @old('price')}}">
+                <input type="number" name="quantity" class="form-control" id="quantity" placeholder="Enter Quantity" value="{{ @old('quantity')}}">
                 @error('quantity')
                 <span class="text-danger mt-5">{{ $message }}</span>
                 @enderror
@@ -81,8 +81,7 @@
 
               <div class="form-group">
                 <label>Description</label>
-                <textarea id="summernote" name="description" class="form-control" rows="10" cols="20">
-                </textarea>
+               <textarea id="summernote" name="description" class="form-control">{{ old('description') }}</textarea>
                 @error('description')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror

@@ -33,10 +33,10 @@ class LogoController extends Controller
             $logo->name = $fileName;
             $saved = $logo->save();
             if ($saved) {
-                return redirect()->route('logo')->with('msg','Logo Updated !');
+                return redirect()->route('admin.logo')->with('msg','Logo Updated !');
             }
         } else {
-            return redirect()->route('logo')->with('msg','Logo Updated !');
+            return redirect()->route('admin.logo')->with('msg','Logo Updated !');
         }
     }
 

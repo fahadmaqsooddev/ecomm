@@ -26,9 +26,9 @@ class LinkController extends Controller
         $saved=$data->save();
         if($saved){
             //echo"Data Saved";
-            return redirect()->route('links')->with('msg','Links Updated');
+            return redirect()->route('admin.links')->with('msg','Links Updated');
         }else{
-            return redirect()->route('links')->with('msg','Something Went Wrong');
+            return redirect()->route('admin.links')->with('msg','Something Went Wrong');
         }
     }
 }

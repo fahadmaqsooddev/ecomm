@@ -35,7 +35,7 @@ class ContactDetailController extends Controller
         $contactDetail = ContactDetail::updateOrCreate($attributes, $values);
     
         // You can return a response or redirect as needed
-        return redirect()->route('contact-details')->with('msg', 'Contact details saved successfully.');
+        return redirect()->route('admin.contact-details')->with('msg', 'Contact details saved successfully.');
     }
     
 }

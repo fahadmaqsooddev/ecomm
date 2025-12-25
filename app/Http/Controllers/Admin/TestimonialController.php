@@ -45,7 +45,7 @@ class TestimonialController extends Controller
         $saved=$testimonial->save();
         if($saved){
             // Redirect or return a response
-            return redirect()->route('testimonials')->with('msg', 'Testimonial Added !');    
+            return redirect()->route('admin.testimonial')->with('msg', 'Testimonial Added !');    
         }
     }
 
@@ -76,7 +76,7 @@ class TestimonialController extends Controller
         $saved=$testimonial->save();
         if($saved){
             // Redirect or return a response
-            return redirect()->route('testimonial')->with('msg', 'Testimonial Updated !');    
+            return redirect()->route('admin.testimonial')->with('msg', 'Testimonial Updated !');    
         }
     }
 
@@ -85,7 +85,7 @@ class TestimonialController extends Controller
         //dd($category);
         $deleted=$testimonial->delete();
         if($deleted){
-             return redirect()->route('testimonial')->with('msg', 'Testimonial Deleted !');
+             return redirect()->route('admin.testimonial')->with('msg', 'Testimonial Deleted !');
         }
 
     }

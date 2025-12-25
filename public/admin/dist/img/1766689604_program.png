@@ -1,0 +1,12 @@
+
+<!-- saved from url=(0029)http://localhost/program.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><script>
+    function showAlert() {
+    setTimeout(function() {
+        alert("Pakistan Zindabad");
+    }, 3000); 
+}
+
+showAlert();
+
+</script></head><body><script src="chrome-extension://gppongmhjkpfnbhagpmjfkannfbllamg/js/js.js"></script></body></html>

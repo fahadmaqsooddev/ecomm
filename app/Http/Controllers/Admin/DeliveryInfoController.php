@@ -25,7 +25,7 @@ class DeliveryInfoController extends Controller
         $saved=$deliveryinfo->save();
         if($saved){
             // Redirect or return a response
-            return redirect()->route('deliveryinfo')->with('msg', 'Delivery Info Added !');    
+            return redirect()->route('admin.deliveryinfo')->with('msg', 'Delivery Info Added !');    
         }
     }
 
@@ -41,7 +41,7 @@ class DeliveryInfoController extends Controller
         $saved=$deliveryinfo->save();
         if($saved){
             // Redirect or return a response
-            return redirect()->route('deliveryinfo')->with('msg', 'Delivery Info Updated !');    
+            return redirect()->route('admin.deliveryinfo')->with('msg', 'Delivery Info Updated !');    
         }
     }
 
@@ -49,7 +49,7 @@ class DeliveryInfoController extends Controller
         //dd($category);
         $deleted=$deliveryinfo->delete();
         if($deleted){
-             return redirect()->route('deliveryinfo')->with('msg', 'Delivery Info Deleted !');
+             return redirect()->route('admin.deliveryinfo')->with('msg', 'Delivery Info Deleted !');
         }
 
     }

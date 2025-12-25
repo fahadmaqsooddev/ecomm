@@ -26,7 +26,7 @@ class ServiceController extends Controller
         $saved=$service->save();
         if($saved){
             // Redirect or return a response
-            return redirect()->route('service')->with('msg', 'Service Added !');    
+            return redirect()->route('admin.service')->with('msg', 'Service Added !');    
         }
     }
     public function edit(Service $service){
@@ -39,14 +39,14 @@ class ServiceController extends Controller
         $saved=$service->save();
         if($saved){
             // Redirect or return a response
-            return redirect()->route('service')->with('msg', 'Service Updated !');    
+            return redirect()->route('admin.service')->with('msg', 'Service Updated !');    
         }
     }
     public function delete(Service $service){
         //dd($category);
         $deleted=$service->delete();
         if($deleted){
-            return redirect()->route('service')->with('msg', 'Service Added !');    
+            return redirect()->route('admin.service')->with('msg', 'Service Added !');    
             
         }
 

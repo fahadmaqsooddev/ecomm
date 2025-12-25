@@ -72,7 +72,7 @@ class BrandController extends Controller
     {
         $deleted = $brand->delete();
         if ($deleted) {
-            return redirect()->route('brand')->with('msg', 'Brand Deleted !');
+            return redirect()->route('admin.brand')->with('msg', 'Brand Deleted !');
         }
     }
 }

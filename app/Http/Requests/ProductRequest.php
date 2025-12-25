@@ -27,12 +27,12 @@ class ProductRequest extends FormRequest
                 'category_id' => 'required|integer',
                 'name' => [
                     'required',
-                    'unique:products,name' . ($productId ? ",$productId" : ''),
+                    'unique:products,name' . ($productId ? ",$productId,id" : ''),
                 ],
                 'price' => 'required|numeric',
                 'quantity' => 'required|numeric',
                 'description' => 'required|min:10',
-                'image' => $productId ? 'nullable|image|mimes:png,jpg,jpeg,webp' : 'required|image|mimes:png,jpg,jpeg,webp', // Make required if product ID does not exist
+                'image' => $productId ? 'nullable|image|mimes:png,jpg,jpeg,webp,jfif' : 'required|image|mimes:png,jpg,jpeg,webp,jfif', // Make required if product ID does not exist
             ];
         }
 

@@ -32,6 +32,10 @@ class ProductController extends Controller
 
     public function store(ProductRequest $request)
 {
+
+
+  //dd($request->file('image'));
+
     // Create a new product
     $product = new Product();
     $product->category_id = $request->category_id; 
@@ -40,20 +44,12 @@ class ProductController extends Controller
     $product->quantity=$request->quantity;
     $product->description = $request->description;
 
-    if ($request->has('image')) {
+    if ($request->hasFile('image')) {
         $image = $request->file('image');
 
         // Generate a unique filename for the uploaded image
         $fileName = time() . '_' . $image->getClientOriginalName();
         $destinationPath = public_path('admin/dist/img/product');
-
-        // Check if a file with the same name already exists
-        $existingImagePath = $destinationPath . '/' . $fileName;
-        // if (file_exists($existingImagePath)) {
-        //     // Remove the existing image file if it exists
-        //     unlink($existingImagePath);
-        // }
-
         // Store the new image
         $image->move($destinationPath, $fileName);
         $product->image = $fileName;
@@ -81,7 +77,6 @@ class ProductController extends Controller
     public function update(ProductRequest $request,Product $product)
     {
         $product->category_id = $request->category_id; 
-        $product->brand_id = $request->brand_id; 
         $product->name = $request->name;        
         $product->price = $request->price;
         $product->quantity = $request->quantity;
@@ -98,14 +93,14 @@ class ProductController extends Controller
         }
         $saved=$product->save();
         if($saved){
-            return redirect()->route('products')->with('msg', 'Product Updated !');    
+            return redirect()->route('admin.products')->with('msg', 'Product Updated !');    
         }
     }
 
     public function delete(Product $product){
         $deleted=$product->delete();
         if($deleted){
-             return redirect()->route('products')->with('msg', 'Product Deleted !');
+             return redirect()->route('admin.products')->with('msg', 'Product Deleted !');
         }
 
     }

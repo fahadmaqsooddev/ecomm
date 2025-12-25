@@ -34,7 +34,7 @@ class BlogController extends Controller
         $saved=$blog->save();
         if($saved){
             // Redirect or return a response
-            return redirect()->route('blog')->with('msg', 'Blog Added !');    
+            return redirect()->route('admin.blog')->with('msg', 'Blog Added !');    
         }
     }
 
@@ -61,7 +61,7 @@ class BlogController extends Controller
         $saved=$blog->save();
         if($saved){
             // Redirect or return a response
-            return redirect()->route('blog')->with('msg', 'Blog Updated !');    
+            return redirect()->route('admin.blog')->with('msg', 'Blog Updated !');    
         }
     }
 
@@ -69,7 +69,7 @@ class BlogController extends Controller
         //dd($category);
         $deleted=$blog->delete();
         if($deleted){
-             return redirect()->route('blog')->with('msg', 'Blog Deleted !');
+             return redirect()->route('admin.blog')->with('msg', 'Blog Deleted !');
         }
 
     }
