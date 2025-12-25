@@ -440,4 +440,11 @@ class WebsiteController extends Controller
     }
 
 
+    public function showProducts(Brand $brand)
+    {
+     
+        $products = $brand->products()->paginate(12);
+        return view('products', compact('brand', 'products'));
+    }
+
 }

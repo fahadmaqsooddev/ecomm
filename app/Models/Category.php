@@ -17,4 +17,8 @@ class Category extends Model
     {
         return ucwords($value); // Capitalizes the first letter of each word
     }
+
+    public function brand(){
+        return $this->belongsTo(Brand::class);
+    }
 }

@@ -48,20 +48,6 @@
                 @enderror
               </div>
               <div class="form-group">
-                <label for="brandname">Brand Name</label>
-                <select name="brand_id" class="form-control">
-                  <option value="" selected disabled>Choose One Option</option>
-                  @if($brands)
-                  @foreach($brands as $brand)
-                  <option value="{{ $brand->id }}"> {{ $brand->name }} </option>
-                  @endforeach
-                  @endif
-                </select>
-                @error('brand_id')
-                <span class="text-danger mt-5">{{ $message }}</span>
-                @enderror
-              </div>
-              <div class="form-group">
                 <label for="name">Product Name</label>
                 <input type="text" name="name" class="form-control" id="categoryname" placeholder="Enter Product Name" value="{{ @old('name')}}">
                 @error('name')

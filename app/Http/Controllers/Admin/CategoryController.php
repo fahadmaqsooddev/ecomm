@@ -5,7 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Brand;
 use App\Http\Requests\CategoryRequest;
+use Illuminate\Support\Facades\Storage;
+
+
 class CategoryController extends Controller
 {
     public function index()
@@ -16,53 +20,60 @@ class CategoryController extends Controller
     }
 
     public function create(){
-        return view('admin.dashboard.categories.add-category');
+        $brands=Brand::select('id','name')->orderBy('id')->get();
+        return view('admin.dashboard.categories.add-category',compact('brands'));
     }
     public function store(CategoryRequest $request)
     {
-        // Create a new category
         $category = new Category();
-        $category->name = $request->categoryname; // Assuming the input field is named 'name'
-        // Set other category properties as needed
-        if($request->has('image')){
-            $image=$request->file('image');
-            // Use a unique filename for the uploaded image
+        $category->name = $request->categoryname;
+        $category->brand_id = $request->brand_id;
+
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $image = $request->file('image');
             $fileName = time() . '_' . $image->getClientOriginalName();
 
-        // Store the image in a public disk (adjust as necessary)
-            $destinationPath = public_path('admin/dist/img');
-            $image->move($destinationPath, $fileName);
-            $category->image=$fileName;
-        }
-        $saved=$category->save();
-        if($saved){
-            // Redirect or return a response
-            return redirect()->route('categories')->with('msg', 'Category Added !');    
+            // Store inside storage/app/public/admin/dist/img
+            $path = $image->storeAs('admin/dist/img', $fileName, 'public');
+
+            $category->image = $fileName;
         }
 
+        $category->save();
+
+        return redirect()->route('admin.categories')->with('msg', 'Category Added!');
     }
+
+
 
     public function edit(Category $category){
-        return view('admin.dashboard.categories.edit-category',compact('category'));
+         $brands=Brand::select('id','name')->orderBy('id')->get();
+        return view('admin.dashboard.categories.edit-category',compact('category','brands'));
     }
     
-    public function update(CategoryRequest $request,Category $category)
+    public function update(CategoryRequest $request, Category $category)
     {
-        $category->name = $request->categoryname; // Assuming you want to update the 'name' field
-        if($request->has('image')){
-            $image=$request->file('image');
-            // Use a unique filename for the uploaded image
+        $category->name = $request->categoryname;
+
+        if($request->hasFile('image')){
+            $image = $request->file('image');
             $fileName = time() . '_' . $image->getClientOriginalName();
 
-        // Store the image in a public disk (adjust as necessary)
-            $destinationPath = public_path('admin/dist/img');
-            $image->move($destinationPath, $fileName);
-            $category->image=$fileName;
+            // Store image in 'public/admin/dist/img' using storeAs
+            $path = $image->storeAs('admin/dist/img', $fileName,'public');
+
+            // Delete old image if exists
+            if($category->image && Storage::exists('admin/dist/img/'.$category->image)){
+                Storage::delete('admin/dist/img/'.$category->image);
+            }
+
+            $category->image = $fileName;
         }
-        $updated=$category->save(); // Save the changes
+
+        $updated = $category->save();
+
         if($updated){
-            // Redirect with a success message
-            return redirect()->route('categories')->with('msg', 'Category Updated !');    
+            return redirect()->route('admin.categories')->with('msg', 'Category Updated!');
         }
     }
 
@@ -70,7 +81,7 @@ class CategoryController extends Controller
         //dd($category);
         $deleted=$category->delete();
         if($deleted){
-             return redirect()->route('categories')->with('msg
+             return redirect()->route('admin.categories')->with('msg
 
                 ', 'Category Deleted Successfully!');
         }

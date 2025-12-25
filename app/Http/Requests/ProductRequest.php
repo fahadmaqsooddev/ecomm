@@ -25,7 +25,6 @@ class ProductRequest extends FormRequest
 
             return [
                 'category_id' => 'required|integer',
-                'brand_id'=>'nullable|integer',
                 'name' => [
                     'required',
                     'unique:products,name' . ($productId ? ",$productId" : ''),

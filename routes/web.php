@@ -78,6 +78,9 @@ Route::post('/searchitem',[WebsiteController::class, 'searchitem'])->name('searc
 
 Route::get('/product/{id}', [WebsiteController::class, 'productdetail'])->name('product');
 
+Route::get('/brands/{brand}', [WebsiteController::class, 'showProducts'])->name('brands.products');
+
+
 //Reset Password
 
 Route::get('/resetpassword', [UserController::class, 'resetpassword'])->name('resetpassword');
@@ -100,6 +103,7 @@ Route::middleware(UserLoginMiddleware::class)->group(function(){
     Route::get('/latest-checkout-data',[CartController::class,'getCheckoutData'])->name('getCheckoutData');
     Route::post('/wishlist',[WishListController::class,'wishlist'])->name('wishlist');
     Route::get('/get-wishlists',[WishListController::class,'getWishlist'])->name('getwishlists');
+    
 
 });
 

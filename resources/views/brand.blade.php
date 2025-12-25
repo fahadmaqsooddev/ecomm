@@ -33,7 +33,7 @@
                         <li class="brand col-lg-2 col-md-3 col-sm-4 col-6">
                                 <article class="card ">
                                     <figure class="card-figure">
-                                        <a href="#">
+                                        <a href="{{ route('brands.products', $brand->id) }}">
                                             <div class="card-img-container">
                                                 <img src="{{ asset('admin/dist/img/'.$brand->image)}}" alt="{{ $brand->heading }}" title="{{ $brand->heading }}" 
                                                 class="lazyload card-image"/>
@@ -42,7 +42,7 @@
                                     </figure>
                                     <div class="card-body">
                                         <h3 class="card-title">
-                                            <a href="#">{{ $brand->name }}</a>
+                                            <a href="{{ route('brands.products', $brand->id) }}">{{ $brand->name }}</a>
                                         </h3>
                                     </div>
                                 </article>

@@ -30,15 +30,25 @@
                         <div class="row">
                             @if($categories)
                                 @foreach($categories as $key => $category)
+                                @php
+                                    $storagePath = storage_path('app/public/admin/dist/img/'.$category->image);
+                                    $publicPath  = public_path('admin/dist/img/'.$category->image);
+                                @endphp
                                     <div class="col-md-4 mb-4">
                                         <div class="card">
-                                            <img src="{{ asset('admin/dist/img/'.$category->image) }}" class="card-img-top rounded-circle" alt="{{ $category->name }}" style="width: 100%; max-height:200px; max-width: 200px; margin: auto;">
+                                           <img 
+                                            src="{{ file_exists($storagePath) 
+                                                    ? asset('storage/admin/dist/img/'.$category->image) 
+                                                    : asset('admin/dist/img/'.$category->image) }}" 
+                                            class="card-img-top rounded-circle mx-auto mt-3" 
+                                            alt="{{ $category->name }}" 
+                                            style="width: 150px; height: 150px; object-fit: cover;">
                                             <h3 class="text-center mt-3">{{ $category->name }}</h3>
 
                                             <div class="card-body text-center">
                                                 <div class="btn-group" role="group" aria-label="Basic example" style="width: 100%; justify-content: space-between;">
-                                                    <a href="{{ route('editcategory', $category->id) }}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</a>
-                                                    <a href="{{ route('deletecategory', $category->id) }}" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
+                                                    <a href="{{ route('admin.editcategory', $category->id) }}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                                    <a href="{{ route('admin.deletecategory', $category->id) }}" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
                                                 </div>
                                             </div>
                                         </div>

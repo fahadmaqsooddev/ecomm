@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-         Schema::table('products', function (Blueprint $table) {
-            $table->string('sku_id')->unique()->after('id'); // Add SKU, unique
-            $table->string('condition')->nullable()->after('sku_id'); // Product condition (e.g., New, Used)
+        Schema::table('categories', function (Blueprint $table) {
+            $table->unsignedBigInteger('brand_id')
+            ->nullable()
+            ->after('image');
         });
     }
 
@@ -22,8 +23,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->dropColumn(['sku_id', 'condition']);
+        Schema::table('categories', function (Blueprint $table) {
+            $table->dropForeign(['brand_id']);
+            $table->dropColumn('brand_id');
         });
     }
 };

@@ -36,6 +36,7 @@ class CategoryRequest extends FormRequest
         } else {
             // If creating, ensure it is unique without an ID
             $rules['categoryname'] .= '|unique:categories,name';
+            $rules['brand_id']='required|exists:brands,id';
             $rules['image']='required|mimes:jpg,png,jpeg,webp';
 
         }
@@ -50,6 +51,7 @@ class CategoryRequest extends FormRequest
             'name.string' => 'The category name must be a string.',
             'name.max' => 'The category name may not be greater than :max characters.',
             'name.unique' => 'The category name must be unique. It has already been taken.',
+            'brand_id.required' => 'The brand name is required'
         ];
     }
 }

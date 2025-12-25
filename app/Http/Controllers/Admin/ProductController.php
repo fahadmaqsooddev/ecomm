@@ -26,8 +26,8 @@ class ProductController extends Controller
 
     public function create(){
         $categories=$this->getcategories();
-        $brands=$this->getbrands();
-        return view('admin.dashboard.products.add-product',compact('categories','brands'));
+
+        return view('admin.dashboard.products.add-product',compact('categories'));
     }
 
     public function store(ProductRequest $request)
@@ -38,7 +38,6 @@ class ProductController extends Controller
     $product->name = $request->name;        
     $product->price = $request->price;
     $product->quantity=$request->quantity;
-    $product->brand_id = $request->brand_id;
     $product->description = $request->description;
 
     if ($request->has('image')) {
@@ -75,8 +74,7 @@ class ProductController extends Controller
 
     public function edit(Product $product){
         $categories=$this->getcategories();
-        $brands=$this->getbrands();
-        return view('admin.dashboard.products.edit-product',compact('product','categories','brands'));
+        return view('admin.dashboard.products.edit-product',compact('product','categories'));
     }
     
 
