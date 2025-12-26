@@ -53,14 +53,18 @@ use Illuminate\Support\Facades\Auth;
                 </div>
                 <div class="col-xl-5 col-lg-3">
                     <div id="search" class="desktop-search pt-3">
-                        <form class="form" action="https://martega.mybigcommerce.com/search.php">
+                        <form class="form">
                             <fieldset class="form-fieldset">
                                 <div class="wb-search input-group">
                                     <label class="is-srOnly" for="search_query">Search</label>
                                     <input class="form-input form-control" name="search_query" id="search_query" placeholder="Search the store" autocomplete="off">
                                     <div class="input-group-btn">
-                                        <button class="wb-search-btn" type="submit"><svg width="20px" height="20px"><use xlink:href="#hsearch"></use></svg></button>
+                                        <button class="wb-search-btn" type="submit">
+                                            <svg width="20px" height="20px"><use xlink:href="#hsearch"></use></svg>
+                                        </button>
                                     </div>
+                                    <!-- suggestion box -->
+                                    <ul id="search-suggestions" class="list-group position-absolute" style="z-index: 9999; display:none;"></ul>
                                 </div>
                             </fieldset>
                         </form>
@@ -250,6 +254,7 @@ use Illuminate\Support\Facades\Auth;
 
 
     window.singleCartUI = function(item,cart_count,cart_total,tax,total) {
+        console.log("Total",total);
         const cartItemsList = document.getElementById('cart-items-list');
         const cartCount = document.getElementById('cart-count');
         const cartTotal = document.getElementById('cart-total');
@@ -429,6 +434,96 @@ use Illuminate\Support\Facades\Auth;
                 }
             });
     };
+
+
+    let selectedIndex = -1;
+const suggestionsList = $('#search-suggestions');
+
+$('#search_query').on('keyup', function(e) {
+    let query = $(this).val();
+    const items = $('#search-suggestions li');
+
+    // Arrow down
+    if (e.key === "ArrowDown") {
+        e.preventDefault();
+        selectedIndex = (selectedIndex + 1) % items.length;
+        items.removeClass('active');
+        $(items[selectedIndex]).addClass('active');
+        return;
+    }
+    // Arrow up
+    if (e.key === "ArrowUp") {
+        e.preventDefault();
+        selectedIndex = (selectedIndex - 1 + items.length) % items.length;
+        items.removeClass('active');
+        $(items[selectedIndex]).addClass('active');
+        return;
+    }
+
+    // Enter key
+    if (e.key === "Enter") {
+        e.preventDefault(); // always prevent default form submit
+
+        let link = null;
+
+        if (selectedIndex > -1) {
+            // If arrow key selected
+            link = $(items[selectedIndex]).find('a').attr('href');
+        } else if (items.length > 0) {
+            link = $(items[0]).find('a').attr('href');
+        }
+
+        if (link) {
+            window.location.href = link;
+        }
+        return;
+    }
+
+    $.ajax({
+        url: "{{ route('search.suggest') }}",
+        method: 'GET',
+        data: { query: query },
+        success: function(data) {
+            let suggestions = '';
+            if (data.length > 0) {
+                data.forEach(product => {
+                    suggestions += `<li class="list-group-item">
+                                        <a href="/product/${product.id}">${product.name}</a>
+                                    </li>`;
+                });
+                suggestionsList.html(suggestions).show();
+                selectedIndex = -1;
+            } else {
+                suggestionsList.html('<li class="list-group-item text-muted">No results found</li>').show();
+                selectedIndex = -1;
+            }
+        }
+    });
+});
+
+
+// Mouse hover highlights the item
+suggestionsList.on('mouseenter', 'li', function() {
+    suggestionsList.find('li').removeClass('active');
+    $(this).addClass('active');
+    selectedIndex = $(this).index();
+});
+
+// Click on suggestion
+suggestionsList.on('click', 'li', function() {
+    const link = $(this).find('a').attr('href');
+    if (link) window.location.href = link;
+});
+
+// Hide suggestion box when clicking outside
+$(document).on('click', function(e) {
+    if (!$(e.target).closest('#search_query, #search-suggestions').length) {
+        suggestionsList.hide();
+        selectedIndex = -1;
+    }
+});
+
+
 
 });
 </script>

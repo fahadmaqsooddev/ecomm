@@ -278,7 +278,7 @@
                 },
                 success: function(response) {
                     console.log("Response Data",response);
-                    singleCartUI(response.cart,response.cart_count,response.cart_total);
+                    singleCartUI(response.cart,response.cart_count,response.cart_total,response.tax,response.total);
                 },
                 error: function(xhr) {
                     if (xhr.status === 401) {

@@ -89,6 +89,9 @@ Route::get('/resetpassword', [UserController::class, 'resetpassword'])->name('re
 //Add to cart
 
 
+Route::get('/search-suggestions', [WebsiteController::class, 'suggest'])->name('search.suggest');
+
+
 Route::middleware(UserLoginMiddleware::class)->group(function(){
     Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
     Route::get('/cart/items', [CartController::class, 'cartdetails'])->name('cartdetails');

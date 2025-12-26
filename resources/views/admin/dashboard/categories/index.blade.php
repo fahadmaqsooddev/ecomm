@@ -37,9 +37,7 @@
                                     <div class="col-md-4 mb-4">
                                         <div class="card">
                                            <img 
-                                            src="{{ file_exists($storagePath) 
-                                                    ? asset('storage/admin/dist/img/'.$category->image) 
-                                                    : asset('admin/dist/img/'.$category->image) }}" 
+                                            src="{{ asset('admin/dist/img/'.$category->image) }}" 
                                             class="card-img-top rounded-circle mx-auto mt-3" 
                                             alt="{{ $category->name }}" 
                                             style="width: 150px; height: 150px; object-fit: cover;">
@@ -74,10 +72,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
-    // Hide the toast after 2 seconds
     setTimeout(function() {
-        $('.toast').fadeOut(200); // Fade out over 200 milliseconds
-    }, 2000); // 2000 milliseconds = 2 seconds
+        $('.toast').fadeOut(200);
+    }, 2000); 
 });
 </script>
 @endsection

@@ -52,7 +52,7 @@
                                         <span class="price">{{ $pro->price }} PKR</span>
                                     </div>
                                     <div class="top-btn mt-2">
-                                        <a href="#" class="cartb btn btn-sm btn-primary" data-product-id="{{ $pro->id }}">Add to Cart</a>
+                                        {{-- <a href="#" class="cartb btn btn-sm btn-primary" data-product-id="{{ $pro->id }}">Add to Cart</a> --}}
                                     </div>
                                 </div>
                             </article>
@@ -76,7 +76,7 @@
                                             <a href="{{ route('product.detail',$pro->id) }}">{{ $pro->name }}</a>
                                         </h4>
                                         <div class="listItem-price">{{ $pro->price }} PKR</div>
-                                        <a href="#" class="cartb btn btn-sm btn-primary mt-2" data-product-id="{{ $pro->id }}">Add to Cart</a>
+                                        {{-- <a href="#" class="cartb btn btn-sm btn-primary mt-2" data-product-id="{{ $pro->id }}">Add to Cart</a> --}}
                                     </div>
                                 </div>
                             </article>
@@ -117,6 +117,7 @@ $(document).ready(function() {
             data: {
                 product_id: productId,
                 quantity: 1,
+                operation:'increase',
                 _token: '{{ csrf_token() }}'
             },
             success: function(response) {

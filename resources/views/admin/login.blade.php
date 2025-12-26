@@ -37,30 +37,39 @@
             <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="card-body">
-                    <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-4 col-form-label">Email</label>
-                        <div class="col-sm-8">
-                            <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="Email">
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-form-label">Email</label>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <input type="email"
+                                    name="email"
+                                    id="inputEmail3"
+                                    class="form-control"
+                                    value="{{ request()->cookie('admin_email') }}" placeholder="Email">
+                                    @error('email')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
                         </div>
-                        @error('email')
-                            <p class="text-danger text-center">{{ $message }}</p>
-                        @enderror
-
                     </div>
-                    <div class="form-group row">
-                        <label for="inputPassword3" class="col-sm-4 col-form-label">Password</label>
-                        <div class="col-sm-8">
-                            <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="Password">
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-form-label">Password</label>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                @error('password')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
                         </div>
-                         @error('password')
-                            <p class="text-danger text-center">{{ $message }}</p>
-                        @enderror
                     </div>
-                    <div class="form-group row">
-                        <div class="offset-sm-4 col-sm-8">
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck2">
-                                <label class="form-check-label" for="exampleCheck2">Remember me</label>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="form-check">
+                                    <input type="checkbox" name="remember_email" class="form-check-input mt-1" id="rememberMe"  {{ request()->cookie('admin_email') ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -69,9 +78,9 @@
                     @endif
                 </div>
                 <!-- /.card-body -->
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-info">Sign in</button>
-                    <button type="reset" class="btn btn-danger float-right">Cancel</button>
+                <div class="card-footer text-center">
+                    <button type="submit" class="btn btn-info">Login</button>
+                    <button type="reset" class="btn btn-danger">Reset</button>
                 </div>
                 <!-- /.card-footer -->
             </form>

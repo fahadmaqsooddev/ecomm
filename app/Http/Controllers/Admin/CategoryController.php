@@ -33,8 +33,9 @@ class CategoryController extends Controller
             $image = $request->file('image');
             $fileName = time() . '_' . $image->getClientOriginalName();
 
-            // Store inside storage/app/public/admin/dist/img
-            $path = $image->storeAs('admin/dist/img', $fileName, 'public');
+            // Store directly in public/admin/dist/img
+            $destinationPath = public_path('admin/dist/img');
+            $image->move($destinationPath, $fileName);
 
             $category->image = $fileName;
         }
@@ -43,6 +44,7 @@ class CategoryController extends Controller
 
         return redirect()->route('admin.categories')->with('msg', 'Category Added!');
     }
+
 
 
 
@@ -55,16 +57,20 @@ class CategoryController extends Controller
     {
         $category->name = $request->categoryname;
 
-        if($request->hasFile('image')){
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $image = $request->file('image');
             $fileName = time() . '_' . $image->getClientOriginalName();
 
-            // Store image in 'public/admin/dist/img' using storeAs
-            $path = $image->storeAs('admin/dist/img', $fileName,'public');
+            // Store image directly in public/admin/dist/img
+            $destinationPath = public_path('admin/dist/img');
+            $image->move($destinationPath, $fileName);
 
             // Delete old image if exists
-            if($category->image && Storage::exists('admin/dist/img/'.$category->image)){
-                Storage::delete('admin/dist/img/'.$category->image);
+            if ($category->image) {
+                $oldImagePath = public_path('admin/dist/img/' . $category->image);
+                if (file_exists($oldImagePath)) {
+                    @unlink($oldImagePath); // suppress error if file doesn't exist
+                }
             }
 
             $category->image = $fileName;
@@ -72,10 +78,11 @@ class CategoryController extends Controller
 
         $updated = $category->save();
 
-        if($updated){
+        if ($updated) {
             return redirect()->route('admin.categories')->with('msg', 'Category Updated!');
         }
     }
+
 
     public function delete(Category $category){
         //dd($category);

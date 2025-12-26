@@ -447,4 +447,14 @@ class WebsiteController extends Controller
         return view('products', compact('brand', 'products'));
     }
 
+     public function suggest(Request $request)
+    {
+        $query = $request->get('query', '');
+        $products = Product::where('name', 'like', "%{$query}%")
+            ->limit(10)
+            ->get(['id', 'name']); // only return what you need
+
+        return response()->json($products);
+    }
+
 }

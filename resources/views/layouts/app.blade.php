@@ -180,6 +180,41 @@
         flex-grow: 1;
       }
 
+      .wb-search {
+          position: relative !important;
+      }
+
+
+      #search-suggestions {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      margin-top: 5px;
+      z-index: 9999;
+      max-height: 250px;
+      overflow-y: auto;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      display: none;
+  }
+
+  #search-suggestions li {
+      padding: 8px 12px;
+  }
+
+  #search-suggestions li:hover {
+      background-color: #f5f5f5;
+  }
+
+  #search-suggestions li.active {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+
+
 
 
     </style>

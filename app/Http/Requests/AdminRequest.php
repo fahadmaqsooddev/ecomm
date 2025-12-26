@@ -22,8 +22,9 @@ class AdminRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email'=>'email|required',
+            'email'=>'required|email',
             'password'=>'required'
         ];
     }
+
 }

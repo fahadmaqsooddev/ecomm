@@ -31,40 +31,33 @@ class ProductController extends Controller
     }
 
     public function store(ProductRequest $request)
-{
+    {
 
+        //dd($request->all());
+        // Create a new product
+        $product = new Product();
+        $product->category_id = $request->category_id; 
+        $product->name = $request->name;        
+        $product->price = $request->price;
+        $product->quantity=$request->quantity;
+        $product->description = $request->description;
 
-  //dd($request->file('image'));
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
 
-    // Create a new product
-    $product = new Product();
-    $product->category_id = $request->category_id; 
-    $product->name = $request->name;        
-    $product->price = $request->price;
-    $product->quantity=$request->quantity;
-    $product->description = $request->description;
-
-    if ($request->hasFile('image')) {
-        $image = $request->file('image');
-
-        // Generate a unique filename for the uploaded image
-        $fileName = time() . '_' . $image->getClientOriginalName();
-        $destinationPath = public_path('admin/dist/img/product');
-        // Store the new image
-        $image->move($destinationPath, $fileName);
-        $product->image = $fileName;
+            // Generate a unique filename for the uploaded image
+            $fileName = time() . '_' . $image->getClientOriginalName();
+            $destinationPath = public_path('admin/dist/img/product');
+            // Store the new image
+            $image->move($destinationPath, $fileName);
+            $product->image = $fileName;
+        }
+        $saved = $product->save();
+        if ($saved) {
+            return redirect()->route('admin.products')->with('msg', 'Product Added !');    
+        }
+        return redirect()->back()->with('error', 'Failed to add product.');
     }
-
-    // Save the product
-    $saved = $product->save();
-    if ($saved) {
-        // Redirect or return a response
-        return redirect()->route('products')->with('msg', 'Product Added !');    
-    }
-
-    // Optional: Handle the case where saving fails
-    return redirect()->back()->with('error', 'Failed to add product.');
-}
 
 
 
