@@ -27,7 +27,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\wishListController;
-
+use App\Http\Controllers\ReviewController;
 
 //Middlewares
 use App\Http\Middleware\CheckLoginMiddleware;
@@ -106,7 +106,7 @@ Route::middleware(UserLoginMiddleware::class)->group(function(){
     Route::get('/latest-checkout-data',[CartController::class,'getCheckoutData'])->name('getCheckoutData');
     Route::post('/wishlist',[WishListController::class,'wishlist'])->name('wishlist');
     Route::get('/get-wishlists',[WishListController::class,'getWishlist'])->name('getwishlists');
-    
+    Route::post('/products/{product}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 
 });
 

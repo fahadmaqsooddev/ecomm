@@ -22,17 +22,7 @@ use Illuminate\Support\Facades\Auth;
                             
                     </li>
                     <li class="navUser-item xs-cur">
-                        <a class="navUser-action navUser-action--currencySelector has-dropdown" href="#" data-dropdown="currencySelection" aria-controls="currencySelection" aria-expanded="false">
-                             <i class="icon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></i>
-                        </a>
-                        <ul class="dropdown-menu" id="currencySelection" data-dropdown-content aria-hidden="true" tabindex="-1">
-                            {{-- <li class="dropdown-menu-item">
-                                <a href="index85eb.html?setCurrencyId=1" data-currency-code="INR">Indian Rupee</a>
-                            </li>
-                            <li class="dropdown-menu-item">
-                                <a href="index612c.html?setCurrencyId=2" data-currency-code="USD">US Dollar</a>
-                            </li> --}}
-                        </ul>
+                       
                     </li>
                 </div>
             </div>

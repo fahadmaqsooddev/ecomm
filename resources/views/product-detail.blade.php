@@ -1,7 +1,21 @@
+@php
+    $productUrl = url()->current();
+    $productTitle = $product->name;
+@endphp
 @extends('layouts.app')
 @section('content')
 <div class="main full col-sm-12 col-lg-9 col-md-9 col-12 crwidth page-content">
-    
+     @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
     <nav aria-label="Breadcrumb" class="breadcrumbs-bg">
         <ol class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
             <li class="breadcrumb " itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
@@ -36,52 +50,7 @@
                         </a>
                     </div>
                 </figure>
-                <div class="col-12">
-                    <ul id="addi-img" class="productView-thumbnails owl-carousel owl-theme" style="opacity: 1; display: block;">
-                        <div class="owl-wrapper-outer"><div class="owl-wrapper" style="width: 976px; left: 0px; display: block; transform: translate3d(-61px, 0px, 0px);"><div class="owl-item" style="width: 61px;"><li class="productView-thumbnail">
-                            <a class="productView-thumbnail-link" href="{{ asset('admin/dist/img/product/' . $product->image) }}" data-image-gallery-item="" data-image-gallery-new-image-url="{{ asset('admin/dist/img/product/' . $product->image) }}" data-image-gallery-new-image-srcset="https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/80w/products/111/383/1__09725.1613648130.jpg?c=1 80w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/160w/products/111/383/1__09725.1613648130.jpg?c=1 160w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/320w/products/111/383/1__09725.1613648130.jpg?c=1 320w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/640w/products/111/383/1__09725.1613648130.jpg?c=1 640w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/960w/products/111/383/1__09725.1613648130.jpg?c=1 960w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1280w/products/111/383/1__09725.1613648130.jpg?c=1 1280w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1920w/products/111/383/1__09725.1613648130.jpg?c=1 1920w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/2560w/products/111/383/1__09725.1613648130.jpg?c=1 2560w" data-image-gallery-zoom-image-url="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1000x1100/products/111/383/1__097252707.jpg?c=1">
-                                <img src="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/700x900/products/111/383/1__097252707.jpg?c=1" alt="Interdum et malesuada fames ac" title="Interdum et malesuada fames ac" data-sizes="auto" srcset="https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/80w/products/111/383/1__09725.1613648130.jpg?c=1 80w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/160w/products/111/383/1__09725.1613648130.jpg?c=1 160w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/320w/products/111/383/1__09725.1613648130.jpg?c=1 320w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/640w/products/111/383/1__09725.1613648130.jpg?c=1 640w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/960w/products/111/383/1__09725.1613648130.jpg?c=1 960w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1280w/products/111/383/1__09725.1613648130.jpg?c=1 1280w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1920w/products/111/383/1__09725.1613648130.jpg?c=1 1920w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/2560w/products/111/383/1__09725.1613648130.jpg?c=1 2560w" data-srcset="https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/80w/products/111/383/1__09725.1613648130.jpg?c=1 80w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/160w/products/111/383/1__09725.1613648130.jpg?c=1 160w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/320w/products/111/383/1__09725.1613648130.jpg?c=1 320w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/640w/products/111/383/1__09725.1613648130.jpg?c=1 640w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/960w/products/111/383/1__09725.1613648130.jpg?c=1 960w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1280w/products/111/383/1__09725.1613648130.jpg?c=1 1280w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1920w/products/111/383/1__09725.1613648130.jpg?c=1 1920w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/2560w/products/111/383/1__09725.1613648130.jpg?c=1 2560w" class="lazyautosizes ls-is-cached lazyloaded" sizes="49px">
-                            </a>
-                        </li></div><div class="owl-item" style="width: 61px;"><li class="productView-thumbnail">
-                            <a class="productView-thumbnail-link" href="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1000x1100/products/111/387/2__974632707.jpg?c=1" data-image-gallery-item="" data-image-gallery-new-image-url="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/397x500/products/111/387/2__974632707.jpg?c=1" data-image-gallery-new-image-srcset="https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/80w/products/111/387/2__97463.1613648130.jpg?c=1 80w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/160w/products/111/387/2__97463.1613648130.jpg?c=1 160w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/320w/products/111/387/2__97463.1613648130.jpg?c=1 320w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/640w/products/111/387/2__97463.1613648130.jpg?c=1 640w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/960w/products/111/387/2__97463.1613648130.jpg?c=1 960w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1280w/products/111/387/2__97463.1613648130.jpg?c=1 1280w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1920w/products/111/387/2__97463.1613648130.jpg?c=1 1920w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/2560w/products/111/387/2__97463.1613648130.jpg?c=1 2560w" data-image-gallery-zoom-image-url="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1000x1100/products/111/387/2__974632707.jpg?c=1">
-                                <img src="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/700x900/products/111/387/2__974632707.jpg?c=1" alt="Interdum et malesuada fames ac" title="Interdum et malesuada fames ac" data-sizes="auto" srcset="https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/80w/products/111/387/2__97463.1613648130.jpg?c=1 80w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/160w/products/111/387/2__97463.1613648130.jpg?c=1 160w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/320w/products/111/387/2__97463.1613648130.jpg?c=1 320w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/640w/products/111/387/2__97463.1613648130.jpg?c=1 640w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/960w/products/111/387/2__97463.1613648130.jpg?c=1 960w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1280w/products/111/387/2__97463.1613648130.jpg?c=1 1280w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1920w/products/111/387/2__97463.1613648130.jpg?c=1 1920w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/2560w/products/111/387/2__97463.1613648130.jpg?c=1 2560w" data-srcset="https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/80w/products/111/387/2__97463.1613648130.jpg?c=1 80w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/160w/products/111/387/2__97463.1613648130.jpg?c=1 160w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/320w/products/111/387/2__97463.1613648130.jpg?c=1 320w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/640w/products/111/387/2__97463.1613648130.jpg?c=1 640w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/960w/products/111/387/2__97463.1613648130.jpg?c=1 960w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1280w/products/111/387/2__97463.1613648130.jpg?c=1 1280w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1920w/products/111/387/2__97463.1613648130.jpg?c=1 1920w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/2560w/products/111/387/2__97463.1613648130.jpg?c=1 2560w" class="lazyautosizes lazyloaded" sizes="49px">
-                            </a>
-                        </li></div><div class="owl-item" style="width: 61px;"><li class="productView-thumbnail">
-                            <a class="productView-thumbnail-link" href="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1000x1100/products/111/384/22__737282707.jpg?c=1" data-image-gallery-item="" data-image-gallery-new-image-url="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/397x500/products/111/384/22__737282707.jpg?c=1" data-image-gallery-new-image-srcset="https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/80w/products/111/384/22__73728.1613648130.jpg?c=1 80w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/160w/products/111/384/22__73728.1613648130.jpg?c=1 160w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/320w/products/111/384/22__73728.1613648130.jpg?c=1 320w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/640w/products/111/384/22__73728.1613648130.jpg?c=1 640w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/960w/products/111/384/22__73728.1613648130.jpg?c=1 960w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1280w/products/111/384/22__73728.1613648130.jpg?c=1 1280w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1920w/products/111/384/22__73728.1613648130.jpg?c=1 1920w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/2560w/products/111/384/22__73728.1613648130.jpg?c=1 2560w" data-image-gallery-zoom-image-url="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1000x1100/products/111/384/22__737282707.jpg?c=1">
-                                <img src="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/700x900/products/111/384/22__737282707.jpg?c=1" alt="Interdum et malesuada fames ac" title="Interdum et malesuada fames ac" data-sizes="auto" srcset="https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/80w/products/111/384/22__73728.1613648130.jpg?c=1 80w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/160w/products/111/384/22__73728.1613648130.jpg?c=1 160w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/320w/products/111/384/22__73728.1613648130.jpg?c=1 320w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/640w/products/111/384/22__73728.1613648130.jpg?c=1 640w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/960w/products/111/384/22__73728.1613648130.jpg?c=1 960w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1280w/products/111/384/22__73728.1613648130.jpg?c=1 1280w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1920w/products/111/384/22__73728.1613648130.jpg?c=1 1920w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/2560w/products/111/384/22__73728.1613648130.jpg?c=1 2560w" data-srcset="https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/80w/products/111/384/22__73728.1613648130.jpg?c=1 80w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/160w/products/111/384/22__73728.1613648130.jpg?c=1 160w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/320w/products/111/384/22__73728.1613648130.jpg?c=1 320w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/640w/products/111/384/22__73728.1613648130.jpg?c=1 640w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/960w/products/111/384/22__73728.1613648130.jpg?c=1 960w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1280w/products/111/384/22__73728.1613648130.jpg?c=1 1280w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1920w/products/111/384/22__73728.1613648130.jpg?c=1 1920w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/2560w/products/111/384/22__73728.1613648130.jpg?c=1 2560w" class="lazyautosizes lazyloaded" sizes="49px">
-                            </a>
-                        </li></div><div class="owl-item" style="width: 61px;"><li class="productView-thumbnail">
-                            <a class="productView-thumbnail-link" href="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1000x1100/products/111/382/23__988392707.jpg?c=1" data-image-gallery-item="" data-image-gallery-new-image-url="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/397x500/products/111/382/23__988392707.jpg?c=1" data-image-gallery-new-image-srcset="https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/80w/products/111/382/23__98839.1613648130.jpg?c=1 80w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/160w/products/111/382/23__98839.1613648130.jpg?c=1 160w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/320w/products/111/382/23__98839.1613648130.jpg?c=1 320w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/640w/products/111/382/23__98839.1613648130.jpg?c=1 640w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/960w/products/111/382/23__98839.1613648130.jpg?c=1 960w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1280w/products/111/382/23__98839.1613648130.jpg?c=1 1280w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1920w/products/111/382/23__98839.1613648130.jpg?c=1 1920w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/2560w/products/111/382/23__98839.1613648130.jpg?c=1 2560w" data-image-gallery-zoom-image-url="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1000x1100/products/111/382/23__988392707.jpg?c=1">
-                                <img src="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/700x900/products/111/382/23__988392707.jpg?c=1" alt="Interdum et malesuada fames ac" title="Interdum et malesuada fames ac" data-sizes="auto" srcset="https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/80w/products/111/382/23__98839.1613648130.jpg?c=1 80w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/160w/products/111/382/23__98839.1613648130.jpg?c=1 160w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/320w/products/111/382/23__98839.1613648130.jpg?c=1 320w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/640w/products/111/382/23__98839.1613648130.jpg?c=1 640w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/960w/products/111/382/23__98839.1613648130.jpg?c=1 960w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1280w/products/111/382/23__98839.1613648130.jpg?c=1 1280w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1920w/products/111/382/23__98839.1613648130.jpg?c=1 1920w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/2560w/products/111/382/23__98839.1613648130.jpg?c=1 2560w" data-srcset="https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/80w/products/111/382/23__98839.1613648130.jpg?c=1 80w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/160w/products/111/382/23__98839.1613648130.jpg?c=1 160w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/320w/products/111/382/23__98839.1613648130.jpg?c=1 320w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/640w/products/111/382/23__98839.1613648130.jpg?c=1 640w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/960w/products/111/382/23__98839.1613648130.jpg?c=1 960w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1280w/products/111/382/23__98839.1613648130.jpg?c=1 1280w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1920w/products/111/382/23__98839.1613648130.jpg?c=1 1920w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/2560w/products/111/382/23__98839.1613648130.jpg?c=1 2560w" class="lazyautosizes lazyloaded" sizes="49px">
-                            </a>
-                        </li></div><div class="owl-item" style="width: 61px;"><li class="productView-thumbnail">
-                            <a class="productView-thumbnail-link" href="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1000x1100/products/111/388/24__327562707.jpg?c=1" data-image-gallery-item="" data-image-gallery-new-image-url="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/397x500/products/111/388/24__327562707.jpg?c=1" data-image-gallery-new-image-srcset="https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/80w/products/111/388/24__32756.1613648131.jpg?c=1 80w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/160w/products/111/388/24__32756.1613648131.jpg?c=1 160w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/320w/products/111/388/24__32756.1613648131.jpg?c=1 320w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/640w/products/111/388/24__32756.1613648131.jpg?c=1 640w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/960w/products/111/388/24__32756.1613648131.jpg?c=1 960w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1280w/products/111/388/24__32756.1613648131.jpg?c=1 1280w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1920w/products/111/388/24__32756.1613648131.jpg?c=1 1920w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/2560w/products/111/388/24__32756.1613648131.jpg?c=1 2560w" data-image-gallery-zoom-image-url="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1000x1100/products/111/388/24__327562707.jpg?c=1">
-                                <img src="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/700x900/products/111/388/24__327562707.jpg?c=1" alt="Interdum et malesuada fames ac" title="Interdum et malesuada fames ac" data-sizes="auto" srcset="https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/80w/products/111/388/24__32756.1613648131.jpg?c=1 80w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/160w/products/111/388/24__32756.1613648131.jpg?c=1 160w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/320w/products/111/388/24__32756.1613648131.jpg?c=1 320w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/640w/products/111/388/24__32756.1613648131.jpg?c=1 640w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/960w/products/111/388/24__32756.1613648131.jpg?c=1 960w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1280w/products/111/388/24__32756.1613648131.jpg?c=1 1280w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1920w/products/111/388/24__32756.1613648131.jpg?c=1 1920w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/2560w/products/111/388/24__32756.1613648131.jpg?c=1 2560w" data-srcset="https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/80w/products/111/388/24__32756.1613648131.jpg?c=1 80w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/160w/products/111/388/24__32756.1613648131.jpg?c=1 160w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/320w/products/111/388/24__32756.1613648131.jpg?c=1 320w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/640w/products/111/388/24__32756.1613648131.jpg?c=1 640w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/960w/products/111/388/24__32756.1613648131.jpg?c=1 960w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1280w/products/111/388/24__32756.1613648131.jpg?c=1 1280w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1920w/products/111/388/24__32756.1613648131.jpg?c=1 1920w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/2560w/products/111/388/24__32756.1613648131.jpg?c=1 2560w" class="lazyautosizes lazyloaded" sizes="49px">
-                            </a>
-                        </li></div><div class="owl-item" style="width: 61px;"><li class="productView-thumbnail">
-                            <a class="productView-thumbnail-link is-active" href="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1000x1100/products/111/385/27__380452707.jpg?c=1" data-image-gallery-item="" data-image-gallery-new-image-url="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/397x500/products/111/385/27__380452707.jpg?c=1" data-image-gallery-new-image-srcset="https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/80w/products/111/385/27__38045.1613648130.jpg?c=1 80w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/160w/products/111/385/27__38045.1613648130.jpg?c=1 160w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/320w/products/111/385/27__38045.1613648130.jpg?c=1 320w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/640w/products/111/385/27__38045.1613648130.jpg?c=1 640w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/960w/products/111/385/27__38045.1613648130.jpg?c=1 960w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1280w/products/111/385/27__38045.1613648130.jpg?c=1 1280w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1920w/products/111/385/27__38045.1613648130.jpg?c=1 1920w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/2560w/products/111/385/27__38045.1613648130.jpg?c=1 2560w" data-image-gallery-zoom-image-url="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1000x1100/products/111/385/27__380452707.jpg?c=1">
-                                <img src="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/700x900/products/111/385/27__380452707.jpg?c=1" alt="Interdum et malesuada fames ac" title="Interdum et malesuada fames ac" data-sizes="auto" srcset="https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/80w/products/111/385/27__38045.1613648130.jpg?c=1 80w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/160w/products/111/385/27__38045.1613648130.jpg?c=1 160w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/320w/products/111/385/27__38045.1613648130.jpg?c=1 320w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/640w/products/111/385/27__38045.1613648130.jpg?c=1 640w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/960w/products/111/385/27__38045.1613648130.jpg?c=1 960w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1280w/products/111/385/27__38045.1613648130.jpg?c=1 1280w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1920w/products/111/385/27__38045.1613648130.jpg?c=1 1920w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/2560w/products/111/385/27__38045.1613648130.jpg?c=1 2560w" data-srcset="https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/80w/products/111/385/27__38045.1613648130.jpg?c=1 80w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/160w/products/111/385/27__38045.1613648130.jpg?c=1 160w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/320w/products/111/385/27__38045.1613648130.jpg?c=1 320w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/640w/products/111/385/27__38045.1613648130.jpg?c=1 640w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/960w/products/111/385/27__38045.1613648130.jpg?c=1 960w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1280w/products/111/385/27__38045.1613648130.jpg?c=1 1280w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1920w/products/111/385/27__38045.1613648130.jpg?c=1 1920w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/2560w/products/111/385/27__38045.1613648130.jpg?c=1 2560w" class="lazyautosizes lazyloaded" sizes="49px">
-                            </a>
-                        </li></div><div class="owl-item" style="width: 61px;"><li class="productView-thumbnail">
-                            <a class="productView-thumbnail-link" href="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1000x1100/products/111/386/25__919332707.jpg?c=1" data-image-gallery-item="" data-image-gallery-new-image-url="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/397x500/products/111/386/25__919332707.jpg?c=1" data-image-gallery-new-image-srcset="https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/80w/products/111/386/25__91933.1613648131.jpg?c=1 80w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/160w/products/111/386/25__91933.1613648131.jpg?c=1 160w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/320w/products/111/386/25__91933.1613648131.jpg?c=1 320w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/640w/products/111/386/25__91933.1613648131.jpg?c=1 640w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/960w/products/111/386/25__91933.1613648131.jpg?c=1 960w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1280w/products/111/386/25__91933.1613648131.jpg?c=1 1280w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1920w/products/111/386/25__91933.1613648131.jpg?c=1 1920w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/2560w/products/111/386/25__91933.1613648131.jpg?c=1 2560w" data-image-gallery-zoom-image-url="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1000x1100/products/111/386/25__919332707.jpg?c=1">
-                                <img src="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/700x900/products/111/386/25__919332707.jpg?c=1" alt="Interdum et malesuada fames ac" title="Interdum et malesuada fames ac" data-sizes="auto" srcset="https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/80w/products/111/386/25__91933.1613648131.jpg?c=1 80w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/160w/products/111/386/25__91933.1613648131.jpg?c=1 160w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/320w/products/111/386/25__91933.1613648131.jpg?c=1 320w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/640w/products/111/386/25__91933.1613648131.jpg?c=1 640w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/960w/products/111/386/25__91933.1613648131.jpg?c=1 960w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1280w/products/111/386/25__91933.1613648131.jpg?c=1 1280w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1920w/products/111/386/25__91933.1613648131.jpg?c=1 1920w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/2560w/products/111/386/25__91933.1613648131.jpg?c=1 2560w" data-srcset="https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/80w/products/111/386/25__91933.1613648131.jpg?c=1 80w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/160w/products/111/386/25__91933.1613648131.jpg?c=1 160w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/320w/products/111/386/25__91933.1613648131.jpg?c=1 320w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/640w/products/111/386/25__91933.1613648131.jpg?c=1 640w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/960w/products/111/386/25__91933.1613648131.jpg?c=1 960w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1280w/products/111/386/25__91933.1613648131.jpg?c=1 1280w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1920w/products/111/386/25__91933.1613648131.jpg?c=1 1920w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/2560w/products/111/386/25__91933.1613648131.jpg?c=1 2560w" class="lazyautosizes lazyloaded" sizes="49px">
-                            </a>
-                        </li></div><div class="owl-item" style="width: 61px;"><li class="productView-thumbnail">
-                            <a class="productView-thumbnail-link" href="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1000x1100/products/111/389/26__676662707.jpg?c=1" data-image-gallery-item="" data-image-gallery-new-image-url="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/397x500/products/111/389/26__676662707.jpg?c=1" data-image-gallery-new-image-srcset="https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/80w/products/111/389/26__67666.1613648131.jpg?c=1 80w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/160w/products/111/389/26__67666.1613648131.jpg?c=1 160w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/320w/products/111/389/26__67666.1613648131.jpg?c=1 320w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/640w/products/111/389/26__67666.1613648131.jpg?c=1 640w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/960w/products/111/389/26__67666.1613648131.jpg?c=1 960w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1280w/products/111/389/26__67666.1613648131.jpg?c=1 1280w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1920w/products/111/389/26__67666.1613648131.jpg?c=1 1920w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/2560w/products/111/389/26__67666.1613648131.jpg?c=1 2560w" data-image-gallery-zoom-image-url="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1000x1100/products/111/389/26__676662707.jpg?c=1">
-                                <img src="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/700x900/products/111/389/26__676662707.jpg?c=1" alt="Interdum et malesuada fames ac" title="Interdum et malesuada fames ac" data-sizes="auto" srcset="https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/80w/products/111/389/26__67666.1613648131.jpg?c=1 80w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/160w/products/111/389/26__67666.1613648131.jpg?c=1 160w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/320w/products/111/389/26__67666.1613648131.jpg?c=1 320w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/640w/products/111/389/26__67666.1613648131.jpg?c=1 640w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/960w/products/111/389/26__67666.1613648131.jpg?c=1 960w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1280w/products/111/389/26__67666.1613648131.jpg?c=1 1280w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1920w/products/111/389/26__67666.1613648131.jpg?c=1 1920w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/2560w/products/111/389/26__67666.1613648131.jpg?c=1 2560w" data-srcset="https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/80w/products/111/389/26__67666.1613648131.jpg?c=1 80w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/160w/products/111/389/26__67666.1613648131.jpg?c=1 160w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/320w/products/111/389/26__67666.1613648131.jpg?c=1 320w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/640w/products/111/389/26__67666.1613648131.jpg?c=1 640w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/960w/products/111/389/26__67666.1613648131.jpg?c=1 960w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1280w/products/111/389/26__67666.1613648131.jpg?c=1 1280w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1920w/products/111/389/26__67666.1613648131.jpg?c=1 1920w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/2560w/products/111/389/26__67666.1613648131.jpg?c=1 2560w" class="lazyautosizes lazyloaded" sizes="49px">
-                            </a>
-                        </li></div></div></div>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                    </ul>
-                </div>
             </section>
-            
             <div class="col-md-7 col-12">
                 <div class="row">
                     <div class="col-xl-7 col-xs-12 prorightw">
@@ -89,7 +58,7 @@
                             <div class="productView-product">
                                 <h1 class="productView-title" itemprop="name">{{ $product->name }}</h1><hr>
                                 <h2 class="productView-brand" itemprop="brand" itemscope="" itemtype="http://schema.org/Brand">
-                                    <a href="../brands/sagaform/index.html" itemprop="url"><span itemprop="name">{{ $product->name }}</span></a>
+                                    <a href="../brands/sagaform/index.html" itemprop="url"><span itemprop="name">{{ $product->category->brand->name }}</span></a>
                                 </h2>
                                 <div class="productView-price">
                                     
@@ -125,11 +94,13 @@
                                         </span>
                                     </div>
                                     <div class="price-section d-inline-block price-section--saving price" style="display: none;">
-                                        <span class="price">(You save</span>
+                                       
+
+                                        {{-- <span class="price">(You save</span> --}}
                                         <span data-product-price-saved="" class="price price--saving">
                                             
                                         </span>
-                                        <span class="price">)</span>
+                                        <span class="price"></span>
                                     </div>
                                 </div>
                                 <div data-content-region="product_below_price"></div><hr>
@@ -148,12 +119,6 @@
                                         Write a Review
                                     </a>
                                     <div id="modal-review-form" class="modal" data-reveal="">
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
                                         <div class="modal-content"><div class="modal-header">
                                             <h2 class="modal-header-title">Write a Review</h2>
                                             <button class="modal-close" type="button" title="Close">
@@ -163,12 +128,13 @@
                                         </div><div class="modal-body">
                                             <div class="writeReview-productDetails">
                                                 <div class="writeReview-productImage-container">
-                                                    <img src="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/397x500/products/111/383/1__097252707.jpg?c=1" alt="Interdum et malesuada fames ac" title="Interdum et malesuada fames ac" data-sizes="auto" srcset="../../cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/80w/products/111/383/1__097252707.jpg?c=1" data-srcset="https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/80w/products/111/383/1__09725.1613648130.jpg?c=1 80w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/160w/products/111/383/1__09725.1613648130.jpg?c=1 160w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/320w/products/111/383/1__09725.1613648130.jpg?c=1 320w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/640w/products/111/383/1__09725.1613648130.jpg?c=1 640w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/960w/products/111/383/1__09725.1613648130.jpg?c=1 960w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1280w/products/111/383/1__09725.1613648130.jpg?c=1 1280w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/1920w/products/111/383/1__09725.1613648130.jpg?c=1 1920w, https://cdn11.bigcommerce.com/s-3h97v0q79m/images/stencil/2560w/products/111/383/1__09725.1613648130.jpg?c=1 2560w" class="lazyload">
+                                                    <img src="{{ asset('admin/dist/img/product/' . $product->image) }}" alt="{{ $product->name }}" title="{{ $product->name }}" data-sizes="auto" class="lazyload">
                                                 </div>
-                                                <h6 class="product-brand">Sagaform</h6>
-                                                <h5 class="product-title">Interdum et malesuada fames ac</h5>
+                                                <h6 class="product-brand">{{ $product->category->brand->name }}</h6>
+                                                <h5 class="product-title">{{ $product->name }}</h5>
                                             </div>
-                                            <form class="form writeReview-form" action="https://martega.mybigcommerce.com/postreview.php" method="post">
+                                            <form class="form writeReview-form" action="{{ route('reviews.store',$product->id) }}" method="post">
+                                                @csrf
                                                 <fieldset class="form-fieldset">
                                                     <div class="form-field form-field--select">
                                                         <label class="form-label" for="rating-rate">Rating
@@ -176,14 +142,15 @@
                                                         </label>
                                                         <!-- Stars -->
                                                         <!-- TODO: Review Stars need to be componentised, both for display and input -->
-                                                        <select id="rating-rate" class="form-select" name="revrating" data-input="" aria-required="true">
+                                                        <select name="revrating" id="rating-rate" class="form-select">
                                                             <option value="">Select Rating</option>
-                                                            <option value="1">1 star (worst)</option>
-                                                            <option value="2">2 stars</option>
-                                                            <option value="3">3 stars (average)</option>
-                                                            <option value="4">4 stars</option>
-                                                            <option value="5">5 stars (best)</option>
+                                                            @for($i=1; $i<=5; $i++)
+                                                                <option value="{{ $i }}" {{ old('revrating') == $i ? 'selected' : '' }}>{{ $i }} star</option>
+                                                            @endfor
                                                         </select>
+                                                        @if($errors->has('revrating'))
+                                                            <span class="text-danger">{{ $errors->first('revrating') }}</span>
+                                                        @endif
                                                     </div>
                                                     
                                                     <!-- Name -->
@@ -191,15 +158,15 @@
                                                         <label class="form-label" for="revfromname_input">Name
                                                             <small>*</small>
                                                         </label>
-                                                        <input type="text" name="revfromname" id="revfromname_input" class="form-input" data-label="Name" data-input="" aria-required="true">
+                                                        <input type="text" name="revfromname" id="revfromname_input" class="form-input" value="{{ auth('web')->user()->name }}" disabled>
                                                     </div>
                                                     
                                                     <!-- Email -->
-                                                    <div class="form-field form-field--input form-field--inputText" id="email" data-validation="">
+                                                    <div class="form-field form-field--input form-field--inputText" id="email" >
                                                         <label class="form-label" for="email_input">Email
                                                             <small>*</small>
                                                         </label>
-                                                        <input type="text" name="email" id="email_input" class="form-input" data-label="Email" data-input="" aria-required="true">
+                                                        <input type="text" name="email" id="email_input" class="form-input" value="{{ auth('web')->user()->email }}" disabled>
                                                     </div>
                                                     
                                                     <!-- Review Subject -->
@@ -208,6 +175,9 @@
                                                             <small>*</small>
                                                         </label>
                                                         <input type="text" name="revtitle" id="revtitle_input" class="form-input" data-label="Review Subject" data-input="" aria-required="true">
+                                                        @if($errors->has('revtitle'))
+                                                            <span class="text-danger">{{ $errors->first('revtitle') }}</span>
+                                                        @endif
                                                     </div>
                                                     
                                                     <!-- Comments -->
@@ -215,7 +185,11 @@
                                                         <label class="form-label" for="revtext_input">Comments
                                                             <small>*</small>
                                                         </label>
+                                                        
                                                         <textarea name="revtext" id="revtext_input" data-label="Comments" rows="" aria-required="true" data-input="" class="form-input"></textarea>
+                                                        @if($errors->has('revtext'))
+                                                            <span class="text-danger">{{ $errors->first('revtext') }}</span>
+                                                        @endif
                                                     </div>
                                                     
                                                     <div class="g-recaptcha" data-sitekey="6LcjX0sbAAAAACp92-MNpx66FT4pbIWh-FTDmkkz"><div style="width: 304px; height: 78px;"><div><iframe title="reCAPTCHA" width="304" height="78" role="presentation" name="a-eiu3vo9ivary" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LcjX0sbAAAAACp92-MNpx66FT4pbIWh-FTDmkkz&amp;co=ZmlsZTo.&amp;hl=en&amp;v=xds0rzGrktR88uEZ2JUvdgOY&amp;size=normal&amp;cb=wiw165abum3l"></iframe></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;"></iframe></div><br>
@@ -223,8 +197,7 @@
                                                     <div class="form-field form-field--submit">
                                                         <input type="submit" class="button button--primary" value="Submit Review">
                                                     </div>
-                                                    <input type="hidden" name="product_id" value="111">
-                                                    <input type="hidden" name="action" value="post_review">
+                                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
                                                     
                                                 </fieldset>
                                             </form>
@@ -269,44 +242,56 @@
                                    
                                     <div class="addthis_toolbox addthis_32x32_style" addthis:url="" addthis:title="">
                                         <ul class="socialLinks">
+                                            <!-- Facebook -->
                                             <li class="socialLinks-item socialLinks-item--facebook">
-                                                <a class="addthis_button_facebook socialLinks__link icon icon--facebook" title="Facebook" href="#">
+                                                <a class="socialLinks__link icon icon--facebook"
+                                                href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($productUrl) }}"
+                                                target="_blank"
+                                                title="Share on Facebook">
                                                     <span class="aria-description--hidden">Facebook</span>
-                                                    <svg>
-                                                        <use xlink:href="#icon-facebook"></use>
-                                                    </svg>
+                                                    <svg><use xlink:href="#icon-facebook"></use></svg>
                                                 </a>
                                             </li>
-                                            <li class="socialLinks-item socialLinks-item--email">
-                                                <a class="addthis_button_email socialLinks__link icon icon--email" title="Email" href="#">
-                                                    <span class="aria-description--hidden">Email</span>
-                                                    <svg>
-                                                        <use xlink:href="#icon-envelope"></use>
-                                                    </svg>
-                                                </a>
-                                            </li>
-                                            <li class="socialLinks-item socialLinks-item--print">
-                                                <a class="addthis_button_print socialLinks__link icon icon--print" title="Print" href="#">
-                                                    <span class="aria-description--hidden">Print</span>
-                                                    <svg>
-                                                        <use xlink:href="#icon-print"></use>
-                                                    </svg>
-                                                </a>
-                                            </li>
+
+                                            <!-- Twitter -->
                                             <li class="socialLinks-item socialLinks-item--twitter">
-                                                <a class="addthis_button_twitter socialLinks__link icon icon--twitter" title="Twitter" href="#">
+                                                <a class="socialLinks__link icon icon--twitter"
+                                                href="https://twitter.com/intent/tweet?url={{ urlencode($productUrl) }}&text={{ urlencode($productTitle) }}"
+                                                target="_blank"
+                                                title="Share on Twitter">
                                                     <span class="aria-description--hidden">Twitter</span>
-                                                    <svg>
-                                                        <use xlink:href="#icon-twitter"></use>
-                                                    </svg>
+                                                    <svg><use xlink:href="#icon-twitter"></use></svg>
                                                 </a>
                                             </li>
+
+                                            <!-- Pinterest -->
                                             <li class="socialLinks-item socialLinks-item--pinterest">
-                                                <a class="addthis_button_pinterest socialLinks__link icon icon--pinterest" title="Pinterest" href="#">
+                                                <a class="socialLinks__link icon icon--pinterest"
+                                                href="https://pinterest.com/pin/create/button/?url={{ urlencode($productUrl) }}&description={{ urlencode($productTitle) }}"
+                                                target="_blank"
+                                                title="Share on Pinterest">
                                                     <span class="aria-description--hidden">Pinterest</span>
-                                                    <svg>
-                                                        <use xlink:href="#icon-pinterest"></use>
-                                                    </svg>
+                                                    <svg><use xlink:href="#icon-pinterest"></use></svg>
+                                                </a>
+                                            </li>
+
+                                            <!-- Email -->
+                                            <li class="socialLinks-item socialLinks-item--email">
+                                                <a class="socialLinks__link icon icon--email"
+                                                href="mailto:?subject={{ urlencode($productTitle) }}&body={{ urlencode($productUrl) }}"
+                                                title="Share via Email">
+                                                    <span class="aria-description--hidden">Email</span>
+                                                    <svg><use xlink:href="#icon-envelope"></use></svg>
+                                                </a>
+                                            </li>
+
+                                            <!-- Print -->
+                                            <li class="socialLinks-item socialLinks-item--print">
+                                                <a class="socialLinks__link icon icon--print"
+                                                href="javascript:window.print()"
+                                                title="Print this page">
+                                                    <span class="aria-description--hidden">Print</span>
+                                                    <svg><use xlink:href="#icon-print"></use></svg>
                                                 </a>
                                             </li>
                                         </ul>
@@ -551,7 +536,7 @@
                             <figcaption class="card-figcaption">
                                 <div class="card-figcaption-body">
                                     <div class="top-btn">
-                                        <a href="../cart.html?action=add&amp;product_id=103" title="Add to Cart" data-event-type="product-click" class="cartb button button--small card-figcaption-button"><svg width="20px" height="20px"><use xlink:href="#pcart"></use></svg></a>
+                                        <a href="#" title="Add to Cart" data-event-type="product-click" class="cartb button button--small card-figcaption-button"><svg width="20px" height="20px" onclick="addToCart({{ $product->id }},'increase')"><use xlink:href="#pcart"></use></svg></a>
                                         <!-- <div class="bwish">
                                             <form action="/wishlist.php?action&#x3D;add&amp;product_id&#x3D;103" class="form-wishlist form-action card-figcaption-button" data-wishlist-add method="post">     
                                                 <button type="submit" value="Add to My Wish List" title="Add to My Wish List">
@@ -560,10 +545,7 @@
                                             </form>
                                         </div> -->
                                         
-                                        <button class="button button--small card-figcaption-button quickview" data-product-id="103"><!-- Quick view --><svg width="19px" height="19px"><use xlink:href="#quick"></use></svg></button>
-                                        <label class="button button--small card-figcaption-button bcom" for="compare-103" title="Compare">
-                                            <svg width="18px" height="18px"> <use xlink:href="#bcom"></use></svg><input class="wb-compare" type="checkbox" name="products[]" value="103" id="compare-103" data-compare-id="103">
-                                        </label>
+                                       
                                     </div>
                                 </div>
                             </figcaption>

@@ -211,7 +211,18 @@
   #search-suggestions li.active {
     background-color: #f0f0f0;
     cursor: pointer;
-}
+  }
+
+  ul.pagination {
+    display: flex !important;
+    flex-wrap: wrap;
+    list-style: none;
+    padding-left: 0;
+  }
+
+  ul.pagination li.page-item {
+      margin: 0 4px;
+  }
 
 
 

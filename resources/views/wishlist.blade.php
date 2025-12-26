@@ -5,7 +5,7 @@
 <nav aria-label="Breadcrumb" class="breadcrumbs-bg">
     <ol class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
         <li class="breadcrumb" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-            <a class="breadcrumb-label" itemprop="item" href="{{ route('index') }}">
+            <a class="breadcrumb-label" itemprop="item" href="{{ route('indexxxx') }}">
                 <span itemprop="name">Home</span>
             </a>
             <meta itemprop="position" content="1">
